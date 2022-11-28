@@ -9,8 +9,11 @@
 package com.efinance.mobilepaymentintegrationsamplecode.main.activities;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import androidx.annotation.Nullable;
+
+import com.efinance.mobilepaymentintegrationsamplecode.BuildConfig;
 import com.google.android.material.textfield.TextInputEditText;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -46,8 +49,8 @@ public class ConfirmPaymentActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
 
-        paymentGateway = new PaymentGateway(this, "1234",
-                "TestFINANCE_HOST", "68", 0, "EGP");
+        paymentGateway = new PaymentGateway(this, BuildConfig.EFINANCE_PASSWORD,
+                BuildConfig.MERCHANT_ID, BuildConfig.API_VERSION, Integer.valueOf(BuildConfig.REGION), BuildConfig.CURRENCY);
 
         senderID = findViewById(R.id.sender_id);
         senderName = findViewById(R.id.sender_name);
@@ -70,13 +73,7 @@ public class ConfirmPaymentActivity extends AppCompatActivity {
         continueButton = findViewById(R.id.btn_Continue);
 
 
-        continueButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                confirmPayment();
-            }
-        });
+        continueButton.setOnClickListener(v -> confirmPayment());
 
         senderRequestNumber.setText(getIntent().getStringExtra("senderRequestNumber"));
 
@@ -105,8 +102,6 @@ public class ConfirmPaymentActivity extends AppCompatActivity {
             paymentConfirmationRequest.SenderRequestNumber = senderRequestNumber.getText().toString();
 
             paymentConfirmationRequest.SessionID = sessionID.getText().toString();
-
-
             /**
              * Test Cards
              *
@@ -119,7 +114,6 @@ public class ConfirmPaymentActivity extends AppCompatActivity {
              *
              *
              * */
-
 
             /**
              *
