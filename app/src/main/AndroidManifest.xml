@@ -13,17 +13,17 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".Main.Activities.PaymentStatusInquiryActivity"
+            android:name=".main.activities.PaymentStatusInquiryActivity"
             android:label="@string/title_activity_payment_status_inquiry"
             android:exported="false"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity
-            android:name=".Main.Activities.ConfirmPaymentActivity"
+            android:name=".main.activities.ConfirmPaymentActivity"
             android:label="@string/title_activity_confirm_payment"
             android:exported="false"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".Main.Activities.CreatePaymentActivity"
+            android:name=".main.activities.CreatePaymentActivity"
             android:label="@string/app_name"
             android:exported="true"
             android:theme="@style/AppTheme.NoActionBar">

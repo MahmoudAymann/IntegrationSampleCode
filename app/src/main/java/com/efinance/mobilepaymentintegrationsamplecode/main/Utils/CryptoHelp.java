@@ -7,7 +7,7 @@
  *
  */
 
-package com.efinance.mobilepaymentintegrationsamplecode.Main.Utils;
+package com.efinance.mobilepaymentintegrationsamplecode.main.Utils;
 
 import android.content.Context;
 import android.content.res.AssetManager;

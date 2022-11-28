@@ -7,25 +7,23 @@
  */
 
 
-package com.efinance.mobilepaymentintegrationsamplecode.Main.Activities;
+package com.efinance.mobilepaymentintegrationsamplecode.main.activities;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+
+import com.efinance.mobilepaymentintegrationsamplecode.BuildConfig;
 import com.google.android.material.textfield.TextInputEditText;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
-
-import com.efinance.mobilepaymentintegrationsamplecode.Main.Utils.CryptoHelp;
 import com.efinance.mobilepaymentintegrationsamplecode.R;
 import com.efinance.mobilepaymentsdk.PaymentCreationCallback;
 import com.efinance.mobilepaymentsdk.PaymentCreationRequest;
@@ -58,7 +56,7 @@ public class CreatePaymentActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         paymentGateway = new PaymentGateway(this, "1234",
-                "TestFINANCE_HOST", "68", 0, "EGP");
+                BuildConfig.MERCHANT_ID, BuildConfig.API_VERSION, Integer.valueOf(BuildConfig.REGION), BuildConfig.CURRENCY);
 
         senderID = findViewById(R.id.sender_id);
         senderName = findViewById(R.id.sender_name);
@@ -89,23 +87,12 @@ public class CreatePaymentActivity extends AppCompatActivity {
             calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
             updateLabel();
         };
-
         expiryDate.setOnClickListener(v -> new DatePickerDialog(CreatePaymentActivity.this, date, calendar
                 .get(Calendar.YEAR), calendar.get(Calendar.MONTH),
                 calendar.get(Calendar.DAY_OF_MONTH)).show());
 
-
-        continueButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                createPayment();
-            }
-        });
-
-
+        continueButton.setOnClickListener(v -> createPayment());
         senderRequestNumber.setText(generateRequestNumber());
-
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
         expiryDate.setText(simpleDateFormat.format(Calendar.getInstance().getTime()));
     }

@@ -6,18 +6,16 @@
  *
  */
 
-package com.efinance.mobilepaymentintegrationsamplecode.Main.Activities;
+package com.efinance.mobilepaymentintegrationsamplecode.main.activities;
 
 import android.os.Bundle;
 import com.google.android.material.textfield.TextInputEditText;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.efinance.mobilepaymentintegrationsamplecode.Main.Utils.CryptoHelp;
 import com.efinance.mobilepaymentintegrationsamplecode.R;
 import com.efinance.mobilepaymentsdk.PaymentException;
 import com.efinance.mobilepaymentsdk.PaymentGateway;

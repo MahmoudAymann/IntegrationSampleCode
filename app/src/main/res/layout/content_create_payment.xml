@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".Main.Activities.CreatePaymentActivity"
+    tools:context=".main.activities.CreatePaymentActivity"
     tools:showIn="@layout/activity_create_payment"
     android:focusable="false">
 

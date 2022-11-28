@@ -11,9 +11,44 @@ android {
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
     }
     buildTypes {
+
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    def getProperty = { b, k -> "\"${project.properties.get(b + '.' + k)}\"" }
+    def demoProperties = { k -> getProperty('Demo', k) }
+    def productionProperties = { k -> getProperty('Production', k) }
+
+    // Specifies one flavor dimension.
+    flavorDimensions "version"
+    productFlavors {
+        demo {
+            buildConfigField ("String", 'MERCHANT_ID', demoProperties("merchant_id"))
+            buildConfigField ("String", 'EFINANCE_PASSWORD', demoProperties("efinance_password"))
+            buildConfigField ("String", 'API_VERSION', demoProperties("api_version"))
+            buildConfigField ("String", 'REGION', demoProperties("region"))
+            buildConfigField ("String", 'CURRENCY', demoProperties("currency"))
+            buildConfigField ("String", 'SENDER_ID', demoProperties("sender_id"))
+            buildConfigField ("String", 'SENDER_PASSWORD', demoProperties("sender_password"))
+            buildConfigField ("String", 'SERVICE_CODE', demoProperties("service_code"))
+            buildConfigField ("String", 'CURRENCY_CODE', demoProperties("currency_code"))
+            applicationIdSuffix ".demo"
+            versionNameSuffix "-demo"
+        }
+        production {
+            buildConfigField ("String", 'MERCHANT_ID', productionProperties("merchant_id"))
+            buildConfigField ("String", 'EFINANCE_PASSWORD', productionProperties("efinance_password"))
+            buildConfigField ("String", 'API_VERSION', productionProperties("api_version"))
+            buildConfigField ("String", 'REGION', productionProperties("region"))
+            buildConfigField ("String", 'CURRENCY', productionProperties("currency"))
+            buildConfigField ("String", 'SENDER_ID', productionProperties("sender_id"))
+            buildConfigField ("String", 'SENDER_PASSWORD', productionProperties("sender_password"))
+            buildConfigField ("String", 'SERVICE_CODE', productionProperties("service_code"))
+            buildConfigField ("String", 'CURRENCY_CODE', productionProperties("currency_code"))
+            applicationIdSuffix ".production"
+            versionNameSuffix "-production"
         }
     }
 
@@ -23,7 +58,12 @@ android {
 }
 
 dependencies {
-    implementation fileTree(include: ['*.jar', '*.aar'], dir: 'libs')
+//    implementation fileTree(include: ['*.jar', '*.aar'], dir: 'libs')
+//    implementation fileTree(include: ['*.jar', '*.aar'])
+
+    implementation files('./libs/mobilepaymentsdk-debug.aar') // local sim
+//    implementation files('./libs/mobilepaymentsdk-release(v3.1 prod).aar') // local sim
+
     implementation 'androidx.appcompat:appcompat:1.5.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation 'com.google.android.material:material:1.6.0'
