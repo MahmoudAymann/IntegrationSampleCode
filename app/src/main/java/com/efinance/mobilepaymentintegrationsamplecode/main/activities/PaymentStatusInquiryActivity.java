@@ -9,6 +9,8 @@
 package com.efinance.mobilepaymentintegrationsamplecode.main.activities;
 
 import android.os.Bundle;
+
+import com.efinance.mobilepaymentintegrationsamplecode.BuildConfig;
 import com.google.android.material.textfield.TextInputEditText;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -39,8 +41,8 @@ public class PaymentStatusInquiryActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
 
-        paymentGateway = new PaymentGateway(this, "1234",
-                "TestFINANCE_HOST", "68", 0, "EGP");
+        paymentGateway = new PaymentGateway(this, BuildConfig.EFINANCE_PASSWORD,
+                BuildConfig.MERCHANT_ID, BuildConfig.API_VERSION, Integer.parseInt(BuildConfig.REGION), BuildConfig.CURRENCY);
 
         senderID = findViewById(R.id.sender_id);
         senderName = findViewById(R.id.sender_name);
@@ -64,9 +66,9 @@ public class PaymentStatusInquiryActivity extends AppCompatActivity {
 
             PaymentStatusInquiryRequest paymentStatusInquiryRequest = new PaymentStatusInquiryRequest();
 
-            paymentStatusInquiryRequest.Sender.Id = senderID.getText().toString();
+            paymentStatusInquiryRequest.Sender.Id = BuildConfig.SENDER_ID;
             paymentStatusInquiryRequest.Sender.Name = senderName.getText().toString();
-            paymentStatusInquiryRequest.Sender.Password = senderPassword.getText().toString();
+            paymentStatusInquiryRequest.Sender.Password = BuildConfig.SENDER_PASSWORD;
 
             paymentStatusInquiryRequest.SenderRequestNumber = senderRequestNumber.getText().toString();
 

@@ -50,7 +50,7 @@ public class ConfirmPaymentActivity extends AppCompatActivity {
 
 
         paymentGateway = new PaymentGateway(this, BuildConfig.EFINANCE_PASSWORD,
-                BuildConfig.MERCHANT_ID, BuildConfig.API_VERSION, Integer.valueOf(BuildConfig.REGION), BuildConfig.CURRENCY);
+                BuildConfig.MERCHANT_ID, BuildConfig.API_VERSION, Integer.parseInt(BuildConfig.REGION), BuildConfig.CURRENCY);
 
         senderID = findViewById(R.id.sender_id);
         senderName = findViewById(R.id.sender_name);
@@ -95,9 +95,9 @@ public class ConfirmPaymentActivity extends AppCompatActivity {
 
             PaymentConfirmationRequest paymentConfirmationRequest = new PaymentConfirmationRequest();
 
-            paymentConfirmationRequest.Sender.Id = senderID.getText().toString();
+            paymentConfirmationRequest.Sender.Id = BuildConfig.SENDER_ID;
             paymentConfirmationRequest.Sender.Name = senderName.getText().toString();
-            paymentConfirmationRequest.Sender.Password = senderPassword.getText().toString();
+            paymentConfirmationRequest.Sender.Password = BuildConfig.SENDER_PASSWORD;
 
             paymentConfirmationRequest.SenderRequestNumber = senderRequestNumber.getText().toString();
 
@@ -133,7 +133,7 @@ public class ConfirmPaymentActivity extends AppCompatActivity {
             // Or Token
             paymentConfirmationRequest.CardToken = cardToken.getText().toString();
 
-            paymentConfirmationRequest.Amount = Double.valueOf(getIntent().getStringExtra("amount"));
+            paymentConfirmationRequest.Amount = Double.parseDouble(getIntent().getStringExtra("amount"));
 
             paymentConfirmationRequest.CardRequestNumber = cardRequestNumber.getText().toString();
 

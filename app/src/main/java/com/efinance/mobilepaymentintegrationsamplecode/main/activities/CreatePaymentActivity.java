@@ -55,8 +55,8 @@ public class CreatePaymentActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        paymentGateway = new PaymentGateway(this, "1234",
-                BuildConfig.MERCHANT_ID, BuildConfig.API_VERSION, Integer.valueOf(BuildConfig.REGION), BuildConfig.CURRENCY);
+        paymentGateway = new PaymentGateway(this, BuildConfig.EFINANCE_PASSWORD,
+                BuildConfig.MERCHANT_ID, BuildConfig.API_VERSION, Integer.parseInt(BuildConfig.REGION), BuildConfig.CURRENCY);
 
         senderID = findViewById(R.id.sender_id);
         senderName = findViewById(R.id.sender_name);
@@ -102,26 +102,26 @@ public class CreatePaymentActivity extends AppCompatActivity {
 
             PaymentCreationRequest paymentCreationRequest = new PaymentCreationRequest();
 
-            paymentCreationRequest.Sender.Id = senderID.getText().toString();
+            paymentCreationRequest.Sender.Id = BuildConfig.SENDER_ID;
             paymentCreationRequest.Sender.Name = senderName.getText().toString();
-            paymentCreationRequest.Sender.Password = senderPassword.getText().toString();
+            paymentCreationRequest.Sender.Password = BuildConfig.SENDER_PASSWORD;
             paymentCreationRequest.Description = description.getText().toString();
             paymentCreationRequest.SenderInvoiceNumber = senderInvoiceNumber.getText().toString();
             paymentCreationRequest.AdditionalInfo = additionalInfo.getText().toString();
 
             paymentCreationRequest.SenderRequestNumber = senderRequestNumber.getText().toString();
 
-            paymentCreationRequest.ServiceCode = serviceCode.getText().toString();
+            paymentCreationRequest.ServiceCode = BuildConfig.SERVICE_CODE;
 
             PaymentCreationRequest.SettlementAmount settlementAmount = new PaymentCreationRequest.SettlementAmount();
 
-            settlementAmount.Amount = Double.valueOf(settlementAmountValue.getText().toString());
-            settlementAmount.SettlementAccountCode = Integer.valueOf(settlementAccountCode.getText().toString());
+            settlementAmount.Amount = Double.parseDouble(settlementAmountValue.getText().toString());
+            settlementAmount.SettlementAccountCode = Integer.parseInt(BuildConfig.SETTLEMENT_ACCOUNT_CODE);
             settlementAmount.Description = settlementAmountDescription.getText().toString();
 
             paymentCreationRequest.SettlementAmounts.add(settlementAmount);
 
-            paymentCreationRequest.Currency = currency.getText().toString();
+            paymentCreationRequest.Currency = BuildConfig.CURRENCY_CODE;
 
             mechanismTypeButton = findViewById(paymentMechanismType.getCheckedRadioButtonId());
 
@@ -243,9 +243,8 @@ public class CreatePaymentActivity extends AppCompatActivity {
 
         @Override
         public void onError(PaymentException paymentException) {
-            Log.e(CreatePaymentActivity.class.getSimpleName(), paymentException.details.getMessage());
-
-
+            Log.e(CreatePaymentActivity.class.getSimpleName(), paymentException.code);
+            Log.e(CreatePaymentActivity.class.getSimpleName(), paymentException.details.toString());
         }
     }
 }

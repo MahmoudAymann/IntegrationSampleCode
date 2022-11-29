@@ -34,6 +34,8 @@ android {
             buildConfigField ("String", 'SENDER_PASSWORD', demoProperties("sender_password"))
             buildConfigField ("String", 'SERVICE_CODE', demoProperties("service_code"))
             buildConfigField ("String", 'CURRENCY_CODE', demoProperties("currency_code"))
+            buildConfigField ("String", 'SETTLEMENT_ACCOUNT_CODE', demoProperties("settlement_account_code"))
+            buildConfigField ("String", 'REDIRECT_URL', demoProperties("redirect_url"))
             applicationIdSuffix ".demo"
             versionNameSuffix "-demo"
         }
@@ -47,6 +49,9 @@ android {
             buildConfigField ("String", 'SENDER_PASSWORD', productionProperties("sender_password"))
             buildConfigField ("String", 'SERVICE_CODE', productionProperties("service_code"))
             buildConfigField ("String", 'CURRENCY_CODE', productionProperties("currency_code"))
+            buildConfigField ("String", 'SETTLEMENT_ACCOUNT_CODE', productionProperties("settlement_account_code"))
+            buildConfigField ("String", 'REDIRECT_URL', productionProperties("redirect_url"))
+
             applicationIdSuffix ".production"
             versionNameSuffix "-production"
         }
@@ -61,8 +66,8 @@ dependencies {
 //    implementation fileTree(include: ['*.jar', '*.aar'], dir: 'libs')
 //    implementation fileTree(include: ['*.jar', '*.aar'])
 
-//    implementation files('./libs/mobilepaymentsdk-debug.aar')
-    implementation files('./libs/mobilepaymentsdk-release(v3.1 prod).aar')
+    demoImplementation files('./libs/mobilepaymentsdk-debug.aar')
+    productionImplementation files('./libs/mobilepaymentsdk-release(v3.1 prod).aar')
 
     implementation 'androidx.appcompat:appcompat:1.5.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
