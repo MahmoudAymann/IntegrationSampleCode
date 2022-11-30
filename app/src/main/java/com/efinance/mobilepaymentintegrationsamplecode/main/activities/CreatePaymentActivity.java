@@ -243,6 +243,7 @@ public class CreatePaymentActivity extends AppCompatActivity {
 
         @Override
         public void onError(PaymentException paymentException) {
+            Toast.makeText(CreatePaymentActivity.this,  paymentException.details.toString(), Toast.LENGTH_LONG).show();
             Log.e(CreatePaymentActivity.class.getSimpleName(), paymentException.code);
             Log.e(CreatePaymentActivity.class.getSimpleName(), paymentException.details.toString());
         }
