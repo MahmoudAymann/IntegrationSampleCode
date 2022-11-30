@@ -214,10 +214,10 @@ public class CreatePaymentActivity extends AppCompatActivity {
             Log.i(CreatePaymentActivity.class.getSimpleName(), "Request Completed Successfully");
 
             Toast.makeText(CreatePaymentActivity.this, "Payment Created Successfully", Toast.LENGTH_LONG).show();
-
+            Log.e("sender", response.OriginalSenderRequestNumber);
             if (mechanismTypeButton.getText().toString().equals("Card")) {
 
-                Intent intent = new Intent(CreatePaymentActivity.this, ConfirmPaymentActivity.class);
+                Intent intent = new Intent(CreatePaymentActivity.this, com.efinance.mobilepaymentintegrationsamplecode.main.activities.ConfirmPaymentActivity.class);
 
                 intent.putExtra("senderRequestNumber", response.OriginalSenderRequestNumber);
                 intent.putExtra("cardRequestNumber", response.CardRequestNumber);
@@ -232,7 +232,7 @@ public class CreatePaymentActivity extends AppCompatActivity {
 
                 Toast.makeText(CreatePaymentActivity.this, "Use this number as a reference: " + response.CardRequestNumber, Toast.LENGTH_LONG).show();
 
-                Intent intent = new Intent(CreatePaymentActivity.this, PaymentStatusInquiryActivity.class);
+                Intent intent = new Intent(CreatePaymentActivity.this, com.efinance.mobilepaymentintegrationsamplecode.main.activities.PaymentStatusInquiryActivity.class);
 
                 intent.putExtra("senderRequestNumber", response.OriginalSenderRequestNumber);
 
