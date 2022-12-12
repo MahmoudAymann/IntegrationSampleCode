@@ -50,7 +50,8 @@ public class ConfirmPaymentActivity extends AppCompatActivity {
 
 
         paymentGateway = new PaymentGateway(this, BuildConfig.EFINANCE_PASSWORD,
-                BuildConfig.MERCHANT_ID, BuildConfig.API_VERSION, Integer.parseInt(BuildConfig.REGION), BuildConfig.CURRENCY);
+                BuildConfig.MERCHANT_ID, BuildConfig.API_VERSION,
+                Integer.parseInt(BuildConfig.REGION), BuildConfig.CURRENCY);
 
         senderID = findViewById(R.id.sender_id);
         senderName = findViewById(R.id.sender_name);
@@ -123,17 +124,17 @@ public class ConfirmPaymentActivity extends AppCompatActivity {
              */
 
             // Pay with Card
-            paymentConfirmationRequest.Card.NameOnCard = nameOnCard.getText().toString();
-            paymentConfirmationRequest.Card.CardNumber = cardNumber.getText().toString();
-            paymentConfirmationRequest.Card.CardCVV = cardCVV.getText().toString();
-            paymentConfirmationRequest.Card.CardExpiryMonth = cardExpiryMonth.getText().toString();
-            paymentConfirmationRequest.Card.CardExpiryYear = cardExpiryYear.getText().toString();
+            paymentConfirmationRequest.Card.NameOnCard = "Ahmed Abdelhalim";//nameOnCard.getText().toString();
+            paymentConfirmationRequest.Card.CardNumber = "4588320011531856"; //cardNumber.getText().toString();
+            paymentConfirmationRequest.Card.CardCVV = "000"; //cardCVV.getText().toString();
+            paymentConfirmationRequest.Card.CardExpiryMonth = "11"; //cardExpiryMonth.getText().toString();
+            paymentConfirmationRequest.Card.CardExpiryYear = "26"; //cardExpiryYear.getText().toString();
             paymentConfirmationRequest.Card.SaveCardFlag = saveCard.isChecked();
 
             // Or Token
             paymentConfirmationRequest.CardToken = cardToken.getText().toString();
 
-            paymentConfirmationRequest.Amount = Double.parseDouble(getIntent().getStringExtra("amount"));
+            paymentConfirmationRequest.Amount = 1.0;//Double.parseDouble(getIntent().getStringExtra("amount"));
 
             paymentConfirmationRequest.CardRequestNumber = cardRequestNumber.getText().toString();
 
