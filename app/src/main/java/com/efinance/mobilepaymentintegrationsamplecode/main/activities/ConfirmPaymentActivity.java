@@ -31,7 +31,6 @@ import com.efinance.mobilepaymentsdk.PaymentGateway;
 
 public class ConfirmPaymentActivity extends AppCompatActivity {
 
-
     PaymentGateway paymentGateway = null;
 
     TextInputEditText senderID, senderName, senderPassword, senderRequestNumber, sessionID,
@@ -86,7 +85,6 @@ public class ConfirmPaymentActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
         paymentGateway.handle3DSecureAuthenticationResult(requestCode, resultCode, data);
     }
 
@@ -125,7 +123,7 @@ public class ConfirmPaymentActivity extends AppCompatActivity {
 
             // Pay with Card
             paymentConfirmationRequest.Card.NameOnCard = "Ahmed Abdelhalim";//nameOnCard.getText().toString();
-            paymentConfirmationRequest.Card.CardNumber = "4588320011531856"; //cardNumber.getText().toString();
+            paymentConfirmationRequest.Card.CardNumber = ""; //cardNumber.getText().toString();
             paymentConfirmationRequest.Card.CardCVV = "000"; //cardCVV.getText().toString();
             paymentConfirmationRequest.Card.CardExpiryMonth = "11"; //cardExpiryMonth.getText().toString();
             paymentConfirmationRequest.Card.CardExpiryYear = "26"; //cardExpiryYear.getText().toString();
