@@ -67,7 +67,7 @@ dependencies {
 //    implementation fileTree(include: ['*.jar', '*.aar'])
 
     demoImplementation files('./libs/mobilepaymentsdk-debug.aar')
-    productionImplementation files('./libs/mobilepaymentsdk-release(v3.1 prod).aar')
+    productionImplementation files('./libs/mobilepaymentsdk-Prod(v3.2).aar')
 
     implementation 'androidx.appcompat:appcompat:1.5.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'

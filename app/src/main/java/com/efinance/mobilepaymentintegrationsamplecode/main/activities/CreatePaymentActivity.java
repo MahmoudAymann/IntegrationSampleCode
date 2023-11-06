@@ -214,7 +214,7 @@ public class CreatePaymentActivity extends AppCompatActivity {
             Log.i(CreatePaymentActivity.class.getSimpleName(), "Request Completed Successfully");
 
             Toast.makeText(CreatePaymentActivity.this, "Payment Created Successfully", Toast.LENGTH_LONG).show();
-            Log.e("sender", response.OriginalSenderRequestNumber);
+            Log.e("sender", "requestNum: "+response.OriginalSenderRequestNumber);
             if (mechanismTypeButton.getText().toString().equals("Card")) {
 
                 Intent intent = new Intent(CreatePaymentActivity.this, com.efinance.mobilepaymentintegrationsamplecode.main.activities.ConfirmPaymentActivity.class);
